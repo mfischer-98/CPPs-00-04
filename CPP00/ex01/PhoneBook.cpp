@@ -6,14 +6,35 @@
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/20 11:43:55 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/21 17:32:37 by mefische         ###   ########.fr       */
+/*   Updated: 2026/07/21 19:16:49 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
 /* UTILS */
-
+/* Function to check if input is empty 
+	- if c == n: check if it is all digits  */
+static bool	parseInput(const std::string& input, char c)
+{
+	if (input.empty())
+	{
+		std::cout << "Input cannot be empty :(" << std::endl;
+		return false;
+	}
+	if (c == 'n')
+	{
+		for (int i = 0; input[i]; i++)
+		{
+			if (!std::isdigit(input[i]))
+			{
+				std::cout << "Numbers only" << std::endl;
+				return false;
+			}
+		}
+	}
+	return true;
+}
 /* Function to guarantee <= 10 characters and to transform >10 into 9 + "." 
 	- Const: I use const so I do not change the value of str
 	- &: I use & so I do not make a copy of str */
@@ -24,16 +45,15 @@ static std::string	formatWord(const std::string& str)
 	return str;
 }
 
-// static int	parse_input(const std::string& input)
-// {
-// 	//Function to parse the user input not empty all numbers or all letters
-// 	//Function to guarantee all letters
-// 	//Function to guarantee all numbers
-// }
+/* Function to transform a string into an int */
+static int	strToInt(const std::string& str)
+{
+	int	num;
 
-
-//Function to transform string into number
-//Function to check if index is in the list
+	std::stringstream ss(str);
+	ss >> num;
+	return num;
+}
 
 /* CONSTRUCTOR & DESTRUCTOR */
 
@@ -51,24 +71,39 @@ void	PhoneBook::addContact() {
 
 	std::cout << "\n ✿ "<< PINK << "First name: " << RESET;
 	std::getline(std::cin, name);
-	contacts[index].setFirstName(name);
+	if (parseInput(name, 's'))
+		contacts[index].setFirstName(name);
+	else
+		return ;
 
 	std::cout << " ✿ " << PINK << "Last name: " << RESET;
 	std::getline(std::cin, last);
-	contacts[index].setLastName(last);
+	if (parseInput(last, 's'))
+		contacts[index].setLastName(last);
+	else
+		return ;
 
 	std::cout << " ✿ " << PINK << "Nickname: " << RESET;
 	std::getline(std::cin, nickname);
-	contacts[index].setNickname(nickname);
+	if (parseInput(last, 's'))
+		contacts[index].setNickname(nickname);
+	else
+		return ;
 
 	std::cout << " ✿ " << PINK << "Darkest secret: " << RESET;
 	std::getline(std::cin, secret);
-	contacts[index].setDarkSecret(secret);
+	if (parseInput(last, 's'))
+		contacts[index].setDarkSecret(secret);
+	else
+		return ;
 
 	std::cout << " ✿ " << PINK << "Phone number: " << RESET;
 	std::getline(std::cin, phone);
-	contacts[index].setPhoneNumber(phone);
-
+	if (parseInput(last, 'n'))
+		contacts[index].setPhoneNumber(phone);
+	else
+		return ;
+	
 	std::cout << PEACH << "\nContact added successfully ♡\n" << RESET << std::endl;
 	
 	index += 1;
@@ -90,35 +125,49 @@ void	PhoneBook::searchContact() const {
 	std::cout << ROSE << "     ╰──────────────────────────────╯" << RESET << std::endl;
 	std::cout << std::endl;
 
-	//need a loop for when they want to leave this area
-	std::cout << ROSE << "|"
-				<< std::setw(10) << "index" << "|"
-				<< std::setw(10) << "first name" << "|"
-				<< std::setw(10) << "last name" << "|"
-				<< std::setw(10) << "nickname" << "|"
-				<< RESET << std::endl;
-
-	for (int i = 0; i < size; i++)
+	while (1)
 	{
-		std::cout << PEACH << "|" << RESET
-					<< std::setw(10) << i << PEACH << "|" << RESET
-					<< std::setw(10) << formatWord(contacts[i].getFirstName()) << PEACH << "|" << RESET
-					<< std::setw(10) << formatWord(contacts[i].getLastName()) << PEACH << "|" << RESET
-					<< std::setw(10) << formatWord(contacts[i].getNickname()) << PEACH << "|" << RESET
-					<< std::endl;
+		std::cout << ROSE << "|"
+					<< std::setw(10) << "index" << "|"
+					<< std::setw(10) << "first name" << "|"
+					<< std::setw(10) << "last name" << "|"
+					<< std::setw(10) << "nickname" << "|"
+					<< RESET << std::endl;
+		
+		for (int i = 0; i < size; i++)
+		{
+			std::cout << PEACH << "|" << RESET
+						<< std::setw(10) << i << PEACH << "|" << RESET
+						<< std::setw(10) << formatWord(contacts[i].getFirstName()) << PEACH << "|" << RESET
+						<< std::setw(10) << formatWord(contacts[i].getLastName()) << PEACH << "|" << RESET
+						<< std::setw(10) << formatWord(contacts[i].getNickname()) << PEACH << "|" << RESET
+						<< std::endl;
+		}
+	
+		std::cout << CREAM << "⌕ Enter an index to view details: ";
+		std::getline(std::cin, input);
+		if (input == "BACK")
+			return ;
+		else if (!parseInput(input, 'n'))
+		{
+			std::cout << "Invalid index, choose one from the list ✿" << std::endl;
+			std::cout << "To go back to MENU, type BACK.." << std::endl;
+		}
+		else
+		{
+			choice = strToInt(input);
+			if (choice < 0 || choice >= size)
+			{
+				std::cout << "Invalid index, choose one from the list ✿" << std::endl;
+				std::cout << "To go back to MENU, type BACK.." << std::endl;
+			}
+			else
+				break ;
+		}
 	}
-
-	std::cout << CREAM << "⌕ Enter an index to view details: ";
-	std::getline(std::cin, input);
-	// choice = ft_stoi(input);
-	// if (choice < 0 || choice >= size)
-	// {
-	// 	std::cout << "Invalid index, choose one from the list ✿" << std::endl;
-	// 	return ;
-	// }
-	// std::cout << LILAC << "Name: " << CREAM << contacts[choice].getFirstName() << RESET << std::endl;
-	// std::cout << LILAC << "Last Name: " << CREAM << contacts[choice].getLastName() << RESET << std::endl;
-	// std::cout << LILAC << "Nickname: " << CREAM << contacts[choice].getNickname() << RESET << std::endl;
-	// std::cout << LILAC << "Contact: " << CREAM << contacts[choice].getPhoneNumber() << RESET << std::endl;
-	// std::cout << LILAC << "Darkest Secret: " << CREAM << contacts[choice].getDarkSecret() << RESET << std::endl;
+	std::cout << "\n ✿ "<< LILAC << "Name: " << CREAM << contacts[choice].getFirstName() << RESET << std::endl;
+	std::cout << " ✿ "<< LILAC << "Last Name: " << CREAM << contacts[choice].getLastName() << RESET << std::endl;
+	std::cout << " ✿ "<< LILAC << "Nickname: " << CREAM << contacts[choice].getNickname() << RESET << std::endl;
+	std::cout << " ✿ "<< LILAC << "Contact: " << CREAM << contacts[choice].getPhoneNumber() << RESET << std::endl;
+	std::cout << " ✿ "<< LILAC << "Darkest Secret: " << CREAM << contacts[choice].getDarkSecret() << RESET << std::endl;
 }
