@@ -6,7 +6,7 @@
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/20 11:12:02 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/21 11:22:33 by mefische         ###   ########.fr       */
+/*   Updated: 2026/07/21 17:18:00 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,15 @@
 #include <string>
 #include <sstream>
 #include <iostream>
+
+#define RESET   "\033[0m"
+#define PINK    "\033[38;5;205m"
+#define MINT    "\033[38;5;121m"
+#define LILAC   "\033[38;5;141m"
+#define PEACH   "\033[38;5;216m"
+#define SKY     "\033[38;5;153m"
+#define CREAM   "\033[38;5;230m"
+#define ROSE    "\033[38;5;211m"
 
 class PhoneBook {
 	private:
@@ -26,12 +35,5 @@ class PhoneBook {
 		PhoneBook();
 		~PhoneBook();
 		void addContact();
-		//Contact name input + contact number input one at a time
-		// first name, last name, nickname, phone number, and darkest secret. A saved contact can’t have empty fields
-		//if size > 8, replace the oldest by the new one
 		void searchContact() const;
-		//display list index, 1st name, last name, nickname
-		// pipe between parts and text right aligned
-		//10 characters, if more 9 plus .
-		//iomanip
 };

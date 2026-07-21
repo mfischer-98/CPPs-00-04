@@ -6,7 +6,7 @@
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/20 11:11:46 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/21 11:42:57 by mefische         ###   ########.fr       */
+/*   Updated: 2026/07/21 17:21:12 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,18 @@ int	main()
 	PhoneBook phonebook;
 	std::string command;
 
-	std::cout	<< "Welcome to your crappy awesome phonebook!\n\n"
-				<< "  - ADD to save a new contact\n"
-				<< "  - SEARCH to display a contact\n"
-				<< "  - EXIT to leave your phonebook :(\n" << std::endl;
+	std::cout << ROSE << "╭──────────────────────────────╮" << RESET << std::endl;
+	std::cout << ROSE << "│" << CREAM << "      your phonebook ✿        " << ROSE << "│" << RESET << std::endl;
+	std::cout << ROSE << "╰──────────────────────────────╯" << RESET << std::endl;
+	std::cout << std::endl;
+	std::cout << LILAC << "  ADD    " << CREAM << "- save a new contact" << RESET << std::endl;
+	std::cout << LILAC << "  SEARCH " << CREAM << "- browse saved contacts" << RESET << std::endl;
+	std::cout << LILAC << "  EXIT   " << CREAM << "- close the phonebook" << RESET << std::endl;
+	std::cout << std::endl;
 
 	while (true)
 	{
-		std::cout << "Enter a command (ADD, SEARCH or EXIT): ";
+		std::cout << "Enter a command " << CREAM << "(ADD ♡, SEARCH ⌕ or EXIT ✿ ): ";
 		std::getline(std::cin, command);
 		if (command == "ADD")
 			phonebook.addContact();

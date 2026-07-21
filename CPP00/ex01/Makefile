@@ -6,7 +6,7 @@
 #    By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/20 09:49:54 by mefische          #+#    #+#              #
-#    Updated: 2026/07/20 11:34:11 by mefische         ###   ########.fr        #
+#    Updated: 2026/07/21 14:26:42 by mefische         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@ NAME = phonebook
 SRC = main.cpp Contact.cpp PhoneBook.cpp
 OBJ = $(SRC:.cpp=.o)
 CC  = c++ -Wall -Wextra -Werror -std=c++98 -g
-#VAL = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes
 
 all: $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/20 11:36:18 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/21 12:00:31 by mefische         ###   ########.fr       */
+/*   Updated: 2026/07/21 14:26:27 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,4 @@ class Contact {
 		std::string getDarkSecret() const;
 		std::string getPhoneNumber() const;
 		// I use const to tell the reader that the object will not be modified when calling this function
-		//void displayShort(); //prints short version for SEARCH
-		//void displyFull(); //prints full version for SEARCH
 };

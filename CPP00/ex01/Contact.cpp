@@ -6,7 +6,7 @@
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/20 11:35:56 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/21 12:00:27 by mefische         ###   ########.fr       */
+/*   Updated: 2026/07/21 16:34:06 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,8 @@
 /* CONSTRUCTOR & DESTRUCTOR:
 	- constructor guarantees that the object can be created 
 	- desctructor is called when object goes out of scope and destroys it */
-Contact::Contact() {
-	return ;
-}
-
-Contact::~Contact() {
-	return ;
-}
+Contact::Contact() {}
+Contact::~Contact() {}
 
 /* GETTERS: methods used to access private variables, returns a copy of it */
 std::string	Contact::getFirstName() const {
