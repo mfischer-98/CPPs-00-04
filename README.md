@@ -34,7 +34,6 @@ CPP04 dives into subtype polymorphism, abstract classes, interfaces, virtual fun
 CPP00/
 ├── ex00/
 ├── ex01/
-├── ex02/
 ...
 CPP01/
 ├── ex00/
