@@ -6,7 +6,7 @@
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/20 11:36:18 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/21 14:26:27 by mefische         ###   ########.fr       */
+/*   Updated: 2026/07/22 09:31:40 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 /* Set to private the data that will be used only inside the class
 	- after setting contact, the user will not change anything on the contact so it is private
-	Set to public functions that will be used in this class and we will acceess outside in main */
+	Set to public functions that will be used in this class and we will acceess outside in main 
+	- Getters: I use const to tell the reader that the object will not be modified when calling this function */
 class Contact {
 	private:
 		std::string firstName;
@@ -33,10 +34,9 @@ class Contact {
 		void setDarkSecret(std::string secret);
 		void setPhoneNumber(std::string phone);
 
-		std::string getFirstName() const; //to access private variables
+		std::string getFirstName() const;
 		std::string getLastName() const;
 		std::string getNickname() const;
 		std::string getDarkSecret() const;
 		std::string getPhoneNumber() const;
-		// I use const to tell the reader that the object will not be modified when calling this function
 };

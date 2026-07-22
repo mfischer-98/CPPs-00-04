@@ -6,7 +6,7 @@
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/20 11:11:46 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/21 17:21:12 by mefische         ###   ########.fr       */
+/*   Updated: 2026/07/22 11:48:34 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	main()
 	{
 		std::cout << "Enter a command " << CREAM << "(ADD ♡, SEARCH ⌕ or EXIT ✿ ): ";
 		std::getline(std::cin, command);
+		if (std::cin.eof())
+			return 0;
 		if (command == "ADD")
 			phonebook.addContact();
 		else if (command == "SEARCH")
@@ -39,6 +41,6 @@ int	main()
 		else if (command == "EXIT")
 			break;
 	}
-	std::cout	<< "Exiting phonebook..." << std::endl;
+	std::cout << LILAC <<  "Phonebook closed ♡ " << std::endl;
 	return 0;
 }
