@@ -1,102 +1,169 @@
+*This project has been created as part of the 42 curriculum by mefische.*
 
-// Main topics: Memory allocation, pointers to members, references, switch statement
+# CPP Module 01 – 42 Project
 
-## Memory Allocation:
-- In C: heap allocation = malloc + free:
-- In C++: heap allocation = new + delete
+## Description
 
-	int main(void)
-	{
-	    int *ptr; // declare the pointer
-	    
-	    ptr = new int; // allocate memory
-	    *ptr = 45 // assign a value
-	    std::cout << "ptr value: " << *ptr << std::endl; // print the value
-	    delete ptr; // deallocate memory
-	    return (0);
-	}
+CPP Module 01 is the second C++ project of the 42 curriculum. Its purpose is to introduce some of the main features that distinguish C++ from C, such as dynamic memory allocation, references, pointers to members and basic file handling.
 
-add declaration of arrays of objects like ex01:
-Zombie* zombieHorde(int N, std::string name)
+Throughout this module, I learned how to manage memory with `new` and `delete`, how references differ from pointers, how to use member function pointers and how to work with file streams in C++98.
+
+## Instructions
+
+### 🛠️ Compilation
+
+Enter the desired exercise directory and compile the project:
+
+```bash
+cd ex00
+make
+```
+
+The Makefile compiles the project using:
+
+```bash
+c++ -Wall -Wextra -Werror -std=c++98
+```
+
+### ex00 — Memory Allocation
+
+A simple introduction to dynamic memory in C++.
+
+### ex01 — Zombie
+
+An exercise about arrays of objects and heap allocation.
+
+### ex02 — Moar brainz!
+
+An exercise about stack-allocated objects and object lifetime.
+
+### ex03 — HumanA and HumanB
+
+An exercise about references and pointers through class design.
+
+### ex04 — Sed is for losers
+
+An exercise about reading and writing files, and replacing text without using `std::string::replace`.
+
+### ex05 — Harl 2.0
+
+An exercise about pointers to member functions.
+
+## Project Structure
+
+```text
+CPP01/
+├── ex00/
+├── ex01/
+├── ex02/
+├── ex03/
+├── ex04/
+├── ex05/
+└── README.md
+```
+
+Each exercise contains its own source files and Makefile.
+
+## Concepts Learned
+
+### Memory allocation
+
+In C, dynamic memory is allocated with `malloc()` and released with `free()`.
+In C++, dynamic memory is allocated with `new` and released with `delete`.
+
+`new` allocates memory and calls the constructor of an object.
+`delete` releases the memory and calls the destructor.
+
+For arrays, `new[]` and `delete[]` must be used instead of `new` and `delete`. For arrays, use `new[]` and `delete[]`.
+
+```cpp
+int *ptr = new int;
+*ptr = 45;
+delete ptr;
+```
+
+```cpp
+Zombie* horde = new Zombie[N];
+delete[] horde;
+```
+
+### References
+
+A reference is an alias for an existing object.
+
+Important rules:
+- it must be initialized when declared,
+- it cannot be null,
+- it cannot be changed to refer to another object later,
+- it behaves like a direct name for the same value.
+
+References are useful when a function or class must always work with a valid object.
+
+### Pointers to members
+
+A pointer to member refers to a class member, not a free function.
+
+Example:
+
+```cpp
+void (Harl::*funcs)(void);[4]
+```
+
+This is an array of pointers to member functions of `Harl`.
+
+To call one:
+
+```cpp
+(this->*funcs[i])();
+```
+
+### File handling
+
+File streams are used to read from and write to files in C++.
+
+The main file stream classes are:
+- `std::ifstream` for reading.
+- `std::ofstream` for writing.
+- `std::fstream` for both reading and writing.
+
+`std::string::c_str()` converts a `std::string` into a C-style string, which is useful when passing a filename to file stream functions in C++98.
+
+`std::getline()` reads a full line from a stream, stopping at the newline character.
+The newline is not stored in the string, so it must be handled manually when writing the output back to another file.
+
+`operator<<` writes data to an output stream.
+
+For text replacement, `std::string::find`, `erase`, and `insert` can be used together to manually replace substrings without using `std::string::replace`.
+
+Example:
+
+```cpp
+size_t pos = line.find(oldString);
+if (pos != std::string::npos)
 {
-	Zombie* horde = new Zombie[N];
-
-	for (int i = 0; i < N; i++)
-		horde[i].setName(name);
-	return (horde);
+    line.erase(pos, oldString.length());
+    line.insert(pos, newString);
 }
+```
 
-## Pointers to members
-this is a hidden pointer inside every non-static member function. It points to the current object that called the function. So inside Zombie::announce(), this->name means “the name of this zombie object.”
+## Resources
 
-You could also write just name inside the member function, but this->name makes it very clear that you are using the member variable.
+### C++ Reference
 
-## References
-- A reference is somehow like a dereferenced pointer
+- [cppreference](https://en.cppreference.com/w/cpp)
+- [cplusplus.com tutorial](https://cplusplus.com/doc/tutorial/)
 
-Once it's defined it will always be referencing the same value
+### C++98
 
-You cannot declare a reference without assigning it a value directly
+- [ISO C++](https://isocpp.org/)
+- [C++ language reference](https://en.cppreference.com/w/cpp/language)
 
-References are constant, you can't change what it references after the declaration
+### Helpful extras
 
-A reference cannot be void, unlike a pointer that can be void
-
-## Using pointers and references
-	std::string	brain = "HI THIS IS BRAIN";
-	std::string* stringPTR = &brain;
-	std::string& stringREF = brain;
-
-	std::cout << &brain << std::endl;
-	std::cout << stringPTR << std::endl;
-	std::cout << &stringREF << std::endl;
-	
-	std::cout << brain << std::endl;
-	std::cout << *stringPTR << std::endl;
-	std::cout << stringREF << std::endl;
-
-## Explained ex03
-	Why this happens
-	The choice comes from the behavior the exercise wants.
-	A reference must be initialized immediately and cannot be null.
-	A pointer can start empty and be assigned later.
-
-	So:
-	HumanA needs a reference because it is always armed.
-	HumanB needs a pointer because it may start unarmed.
-
-	Future rule
-	When a class must always have an object, use a reference.
-	When a class may have none at first, use a pointer.
-
-## file handling in C++
-- fstream https://www.geeksforgeeks.org/cpp/file-handling-c-classes/
-- std::ifstream and std::ofstream basics.
-	open() and is_open()
-	std::string::c_str()
-	Reading with std::getline
-	Writing with operator<<
-	std::string::find, erase, and insert for replacement logic
-
-## Switch statement
-
-- Better than many ifs
-
-	swtich (av[2][0])
-	{
-    case '+':
-        printf("%d", atoi(av[1]) + atoi(av[3]));
-        break;
-    case '-':
-        printf("%d", atoi(av[1]) - atoi(av[3]));
-        break;
-    case '*':
-        printf("%d", atoi(av[1]) * atoi(av[3]));
-        break;
-    case '/':
-        printf("%d", atoi(av[1]) / atoi(av[3]));
-        break;
-    case '%':
-        printf("%d", atoi(av[1]) % atoi(av[3]));
-        break;
-	}
+- [cppreference `std::string`](https://en.cppreference.com/w/cpp/string/basic_string)
+- [cppreference `std::getline`](https://en.cppreference.com/w/cpp/string/basic_string/getline)
+- [cppreference `std::ifstream::open`](https://cplusplus.com/reference/fstream/ifstream/open/)
+- [cppreference `std::basic_string::erase`](https://en.cppreference.com/w/cpp/string/basic_string/erase)
+- [cppreference `std::string::find`](https://en.cppreference.com/w/cpp/string/basic_string/find)
+- [Getter return discussion](https://stackoverflow.com/questions/134731/returning-a-const-reference-to-an-object-instead-of-a-copy)
+- [Getter copy vs reference discussion](https://stackoverflow.com/questions/2182408/return-a-const-reference-or-a-copy-in-a-getter-function)
