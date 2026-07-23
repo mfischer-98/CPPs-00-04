@@ -69,6 +69,15 @@ A reference cannot be void, unlike a pointer that can be void
 	When a class must always have an object, use a reference.
 	When a class may have none at first, use a pointer.
 
+## file handling in C++
+- fstream https://www.geeksforgeeks.org/cpp/file-handling-c-classes/
+- std::ifstream and std::ofstream basics.
+	open() and is_open()
+	std::string::c_str()
+	Reading with std::getline
+	Writing with operator<<
+	std::string::find, erase, and insert for replacement logic
+
 ## Switch statement
 
 - Better than many ifs

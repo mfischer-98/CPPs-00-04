@@ -6,7 +6,7 @@
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/20 11:43:55 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/22 11:52:08 by mefische         ###   ########.fr       */
+/*   Updated: 2026/07/23 10:59:05 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static void invalidIndex(void)
 PhoneBook::PhoneBook() : index(0), size(0) {}
 PhoneBook::~PhoneBook() {}
 
-/* METHODS */
+/* MEMBER FUNCTIONS */
 
 /* Adds a new contact to the phonebook.
 	- Prompts the user for first name, last name, nickname, dark secret and phone number
