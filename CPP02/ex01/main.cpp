@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/23 15:08:19 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/23 17:38:50 by mefische         ###   ########.fr       */
+/*   Created: 2026/07/23 15:06:50 by mefische          #+#    #+#             */
+/*   Updated: 2026/07/24 10:03:06 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Fixed.hpp"
 #include <iostream>
 
-class Fixed {
-	private:
-		int rawBits;
-		static const int bits = 8;
-	public:
-		Fixed();
-		Fixed(const Fixed& other);
-		Fixed& operator=(const Fixed& other); 
-		~Fixed();
+int main(void) {
+	Fixed a;
+	Fixed const b( 10 );
+	Fixed const c( 42.42f );
+	Fixed const d( b );
 
-		int getRawBits(void) const;
-		void setRawBits(int const raw);
-};
+	a = Fixed( 1234.4321f );
+
+	std::cout << "a is " << a << std::endl;
+	std::cout << "b is " << b << std::endl;
+	std::cout << "c is " << c << std::endl;
+	std::cout << "d is " << d << std::endl;
+	
+	return 0;
+}

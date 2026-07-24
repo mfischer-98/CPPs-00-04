@@ -6,11 +6,12 @@
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 15:08:19 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/23 17:38:50 by mefische         ###   ########.fr       */
+/*   Updated: 2026/07/24 11:10:23 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <cmath>
 
 class Fixed {
 	private:
@@ -18,10 +19,17 @@ class Fixed {
 		static const int bits = 8;
 	public:
 		Fixed();
+		Fixed(const int other);
+		Fixed(const float other);
 		Fixed(const Fixed& other);
 		Fixed& operator=(const Fixed& other); 
 		~Fixed();
 
 		int getRawBits(void) const;
 		void setRawBits(int const raw);
+
+		float toFloat(void) const;
+		int toInt(void) const;
 };
+
+std::ostream& operator<<(std::ostream& out, const Fixed& fixed);
