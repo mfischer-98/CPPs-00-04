@@ -6,11 +6,14 @@
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/24 13:29:46 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/24 16:27:21 by mefische         ###   ########.fr       */
+/*   Updated: 2026/07/24 16:52:41 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#ifndef CLAPTRAP_HPP
+# define CLAPTRAP_HPP
+
+# include <iostream>
 
 class ClapTrap {
 	private:
@@ -37,3 +40,5 @@ class ClapTrap {
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
 };
+
+#endif

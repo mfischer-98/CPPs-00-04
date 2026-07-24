@@ -6,7 +6,7 @@
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/24 15:44:18 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/24 16:57:14 by mefische         ###   ########.fr       */
+/*   Updated: 2026/07/24 16:57:16 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,4 @@ class ScavTrap: public ClapTrap {
 		void attack(const std::string& target);
 };
 
-#endif;
+#endif
