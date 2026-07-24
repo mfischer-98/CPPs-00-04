@@ -1,142 +1,316 @@
-Ad-hoc polymorphism, operator overloading and the Orthodox Canonical class form
+*This project has been created as part of the 42 curriculum by mefische.*
+
+# CPP Module 02 – 42 Project
+
+## Description
+
+CPP Module 02 introduces some of the most important ideas in C++: ad-hoc polymorphism, operator overloading, and the Orthodox Canonical Form.
+
+Throughout this module, I learned how to make custom classes behave like built-in types, how to overload operators such as `+`, `-`, `<<`, `++`, and how to design a class so that copying, assignment, and destruction behave correctly and predictably.
+
+This module also introduces fixed-point numbers, which are a useful way to represent decimal values without relying on floating-point arithmetic all the time.
+
+## Instructions
+
+### 🛠️ Compilation
+
+Enter the desired exercise directory and compile the project:
+
+```bash
+cd ex00
+make
+```
+
+The Makefile compiles the project using:
+
+```bash
+c++ -Wall -Wextra -Werror -std=c++98
+```
+
+## Project Structure
+
+```text
+CPP02/
+├── ex00/
+├── ex01/
+├── ex02/
+└── README.md
+```
+
+Each exercise contains its own source files and Makefile.
+
+## Exercises
+
+### ex00 — My First Phonebook
+
+An exercise focused on basic class creation, constructors, and object-oriented design.
+
+### ex01 — String Manipulation and Class Design
+
+An exercise about creating a useful class with proper canonical form and stream output.
+
+### ex02 — Fixed-Point Numbers
+
+An exercise about fixed-point representation, conversions, operator overloading, and class behavior.
+
+## Concepts Learned
+
+### Orthodox Canonical Form
+
+The Orthodox Canonical Form is a standard way of designing C++ classes. It means your class should include four special member functions:
+- Default constructor.
+- Copy constructor.
+- Copy assignment operator.
+- Destructor.
 
 
-From now on, all your classes must be designed in the Orthodox Canonical Form,
-unless explicitly stated otherwise. They will then implement the four required member
-functions below:
-• Default constructor
-• Copy constructor
-• Copy assignment operator (assign one value to another)
-• Destructor
-Split your class code into two files. The header file (.hpp/.h) contains the class
-definition, whereas the source file (.cpp) contains the implementation
+```cpp
+class Example {
+private:
+    int value;
 
-Using Floating Point Numbers: Floating point numbers provide a kind of illusion; they look like "real" numbers, with decimals and possibly very large or small magnitudes. In reality, a 4-byte floating point number, for example, can actually hold fewer distinct values than a 4-byte integer. The reason for this is, of course, that the internal representation of floating point numbers is not straightforward. Bits representing an integer are interpreted literally as a binary number, while bits in a floating point number have a more complicated interpretation. I will talk about this interpretation at length, but first I'd like to discuss some conceptual differences between integers and floats.
-"Accuracy" refers to how close a measurement is to the true value, whereas "precision" has to do with how much information you have about a quantity, how uniquely you have it pinned down.
-
-https://www.cprogramming.com/tutorial/floating_point/understanding_floating_point.html
-
- the IEEE-754 standard. This standard is prevalent enough that it's worthwhile to look at it in depth; chances are good you'd be able to use this information on your platform (look for ieee754.h). An IEEE-754 float (4 bytes) or double (8 bytes) has three components (there is also an analogous 96-bit extended-precision format under IEEE-854): a sign bit telling whether the number is positive or negative, an exponent giving its order of magnitude, and a mantissa specifying the actual digits of the number. Using single-precision floats (32 bits) as an example, here is the bit layout:
-
- seeeeeeeemmmmmmmmmmmmmmmmmmmmmmm    meaning
-31                              0    bit #
-s = sign bit, e = exponent, m = mantissa
-
-Floating-point numbers in IEEE 754 are stored using a sign bit, exponent, and mantissa. The exponent controls the range, while the mantissa controls precision, so numbers are stored approximately and may need rounding.
-https://www.youtube.com/watch?v=bbkcEiUjehk
-
-Fixed Point Number
-Understanding fixed point number representation requires knowledge of the shifting process described above. Simply by implicitly establishing the binary point to be at a specific place of a numeral, we can define a fixed point number type to represent a real number in computers (or any hardware, in general). Then we will just use this implicit standard to express numbers.
-
-Two arguments are all that are required to theoretically create a fixed point type:
-
-Width of the number representation.
-Binary point position within the number.
-the notation fixed<w, b>, where "w" stands for the overall amount of bits used (the width of a number) and "b" stands for the location of the binary point counting from the least significant bit (counting from 0).
-https://www.geeksforgeeks.org/computer-organization-architecture/fixed-point-representation/
-
-https://www.ibm.com/docs/en/i/7.6.0?topic=only-copy-assignment-operators-c
-
-INT AND FLOAT CONVERSION
-https://ncot.uk/devnotes/computing_maths/fixed_point_arithmetic/int_to_fixed/index.html
-
-
-Polymorphism in C++
-Last Updated : 27 May, 2026
-The word polymorphism means having many forms. In C++, polymorphism concept can be applied to functions and operators. A single function name can work differently in different situations. Similarly, an operator works different when used in different context.
-
-Same function or operator can behave differently depending on the context or object it is used with.
-Achieved through function overloading and function overriding, improving code reusability and flexibility.
-Types of Polymorphism
-In C++, polymorphism is mainly divided into two types
-
-Compile-Time Polymorphism: The function or operator is decided at the time of compilation based on how it is called.
-Run-Time Polymorphism: The function is decided while the program is running based on the object being used.
-https://www.geeksforgeeks.org/cpp/cpp-polymorphism/
-
-
-1. Function Overloading
-Function Overloading allows multiple functions to have the same name but different parameters. The difference can be in:
-
-Number of parameters
-Type of parameters
-Explanation: An add() function is used to perform addition of two numbers, and it works differently for integers and floating-point values. The compiler selects the correct function based on the arguments passed during the function call.
-
-
-#include <bits/stdc++.h>
-using namespace std;
-​
-class Geeks {
 public:
-    
-    // Function to add two integers
-    void add(int a, int b) {
-        cout << "Integer Sum = " << a + b
-        << endl;
+    Example() : value(0) {}
+    Example(const Example& other) { *this = other; }
+    Example& operator=(const Example& other) {
+        if (this != &other)
+            value = other.value;
+        return *this;
     }
-    
-    // Function to add two floating point values
-    void add(double a, double b) {
-        cout << "Float Sum = " << a + b
-        << endl ;
-    }
+    ~Example() {}
+};
+```
 
-https://www.geeksforgeeks.org/cpp/operator-overloading-cpp/
-Operator overloading means giving a new meaning to an operator (like +, -, *, []) when it is used with objects.
-With operator overloading, we can make operators work for user defined classes structures.
-It is an example of compile-time polymorphism.
+These functions are important because they define how an object is created, copied, assigned, and destroyed.
 
-Why use Operator Overloading?
-Allows objects to behave like basic data types.
-Useful for mathematical objects like Complex numbers and Vectors.
-Reduces the need for extra function calls.
+Even when a class is simple, following this form helps keep the code clean, predictable, and ready for future changes.
 
-Important Points About Operator Overloading
-At least one operand must be a user-defined type
-Operators can be overloaded as member or non-member functions
-Some operators (like conversion operators) must be member functions
+#### Default constructor
 
+The default constructor is called when an object is created without any arguments.
 
-Ad-hoc Polymorphism (Overloading)
-Ad-hoc polymorphism allows functions with the same name act differently for each type. For example, given two ints and the + operator, it adds them together. Given two std::strings it concatenates them together. This is called overloading.
-https://catonmat.net/cpp-polymorphism#:~:text=Ad%2Dhoc%20Polymorphism%20(Overloading),This%20is%20called%20overloading.
+It is used to give the object a valid starting state.
 
-The Four Polymorphisms in C++
-Last updated 2 weeks ago
-When people talk about polymorphism in C++ they usually mean the thing of using a derived class through the base class pointer or reference, which is called subtype polymorphism. But they often forget that there are all kinds of other polymorphisms in C++, such as parametric polymorphism, ad-hoc polymorphism and coercion polymorphism.
+For example, a `Fixed` object might start with a raw value of `0`.
 
-These polymorphisms also go by different names in C++,
+#### Copy constructor
 
-Subtype polymorphism is also known as runtime polymorphism.
-Parametric polymorphism is also known as compile-time polymorphism.
-Ad-hoc polymorphism is also known as overloading.
-Coercion is also known as (implicit or explicit) casting.
-In this article I'll illustrate all the polymorphisms through examples in C++ language and also give insight on why they have various other names.
+The copy constructor is called when a new object is created from an existing object of the same class. It creates a new object with the same content as the source object.
+
+Example:
+
+```cpp
+Fixed a;
+Fixed b(a);
+```
 
 
-<< is the stream insertion operator. With built-in types, std::cout << 42 works because ostream already knows how to print integers, floats, strings, and so on.
+#### Copy assignment operator
 
-For your own class, C++ does not guess how to print it, so you define an overload that takes an ostream and your object, then writes a readable representation into the stream.
+The copy assignment operator is used when one already existing object receives the value of another one.
 
-std::ostream& means “a reference to an output stream object,” and ostream is the C++ type behind things like std::cout.
+Example:
 
-So std::ostream& operator<<(std::ostream& os, const Fixed& fixed) means: take an output stream, write your object into it, and return the same stream so output can be chained.
+```cpp
+Fixed a;
+Fixed b;
+a = b;
+```
 
-What ostream is
-ostream stands for output stream. It is the standard class C++ uses for writing text to outputs like the terminal, files, or string buffers.
+Here, `a` already exists, and its value is replaced with the value of `b`.
 
-std::cout is one specific ostream object: the standard console output stream.
+This is different from the copy constructor because assignment does not create a new object, it updates an existing one.
 
-Why the & is there
-The & means reference, which avoids copying the stream object and keeps writing into the original stream.
 
-That is important because you want to modify the same std::cout, not a temporary copy of it.
+### Why the Orthodox Canonical Form matters
 
-Operator overload (why, how, examples)
-https://coddy.tech/learn/cpp/object_oriented_programming/comparison_operator_overload
-https://coddy.tech/learn/cpp/object_oriented_programming/arithmetic_operator_overload
-https://www.programiz.com/cpp-programming/increment-decrement-operator-overloading
+The Orthodox Canonical Form helps prevent problems when objects are copied, assigned, or destroyed. It is especially important when a class manages resources such as dynamic memory, file handles, or pointers.
 
-what is a static member function?
-Static Member Function in C++ is a special kind of function that belongs to the class itself rather than any specific object. A static keyword is used to define those functions. They can be directly called by using just the class name, without creating an instance of the class, which is an object.
-These are only accessible within the body of the class they are defined in, thus, implementing class-wide operations and certain security measures.
+Even if your class does not manage resources yet, using the canonical form is a good habit because it makes the class safer and easier to extend later.
+
+### Ad-hoc polymorphism
+
+Ad-hoc polymorphism means that the same function name or operator can behave differently depending on the types involved.
+
+For example, `+` can add integers, concatenate strings, or combine custom objects if the correct overload exists.
+
+
+```cpp
+int a = 2;
+int b = 3;
+std::cout << a + b << std::endl;
+```
+
+Here, `+` adds two integers.
+
+
+```cpp
+std::string first = "Hello ";
+std::string second = "world";
+std::cout << first + second << std::endl;
+```
+
+Here, `+` concatenates strings.
+
+
+The operator is the same, but the behavior changes depending on the types.
+
+This is a form of compile-time polymorphism because the compiler chooses the correct version based on the types used in the expression. A simple idea to remember is: the same symbol can have different meanings depending on the object type.
+
+### Operator overloading
+
+Operator overloading means giving a new meaning to operators like `+`, `-`, `*`, `/`, `<<`, `++`, `--`, `==`, and `!=` when they are used with user-defined types.
+
+This allows custom classes to behave more naturally, like numbers or containers.
+
+For example, a `Fixed` class can be printed with `std::cout << fixed`, compared with `>`, and incremented with `++`.
+
+Operator overloading is useful because it makes code shorter, clearer, and easier to read.
+
+### Stream insertion operator `<<`
+
+The `<<` operator is called the stream insertion operator.
+
+With built-in types, `std::cout << 42` works because `std::ostream` already knows how to display integers, floats, and strings.
+
+For custom classes, C++ does not automatically know how the object should be printed, so we define:
+
+```cpp
+std::ostream& operator<<(std::ostream& out, const Fixed& fixed);
+```
+
+This function tells C++ how to send the object’s value into an output stream.
+
+It returns the same stream so that output can be chained:
+
+```cpp
+std::cout << a << b << std::endl;
+```
+
+### Increment and decrement operators
+
+The increment and decrement operators `++` and `--` can be overloaded in two forms: prefix and postfix.
+
+Prefix means the object is modified first, then returned.
+
+Postfix means the current value is returned first, and the object is modified after that.
+
+This difference is important because `++a` and `a++` do not behave exactly the same way.
+
+
+### Floating point numbers
+
+Floating-point numbers give the illusion of storing exact real numbers, but they actually store values approximately. A float uses a sign bit, an exponent and a mantissa.
+
+The exponent controls the range, while the mantissa controls precision. Because of this representation, some decimal values cannot be stored exactly, and small rounding differences may appear.
+
+This is why a value like `42.42f` may not print exactly as `42.42` when converted and displayed.
+
+### Fixed-point numbers
+
+Fixed-point numbers are a way to represent real numbers using integers.
+
+Instead of storing a number directly as a float, the class stores a raw integer and treats part of the bits as fractional bits.
+
+This means the value is stored with a fixed scale.
+
+For example, if the number of fractional bits is `8`, then the scale factor is `2^8 = 256`.
+
+That means:
+- `1.0` is stored as `256`.
+- `2.5` is stored as `640`.
+- `0.5` is stored as `128`.
+
+### Fixed-point integer conversion
+
+
+An integer is converted to fixed-point by shifting it left by the number of fractional bits.
+
+
+This multiplies the value by the scale factor.
+
+
+Example:
+
+
+```cpp
+int n = 42;
+int raw = n << 8;
+std::cout << raw << std::endl;
+```
+
+This gives `42 * 256 = 10752`.
+
+
+In the class, this is usually done in the constructor:
+
+
+```cpp
+Fixed::Fixed(const int number) {
+    rawBits = number << bits;
+}
+```
+
+
+### Fixed-point float conversion
+
+
+A float is converted by multiplying it by the scale factor and rounding to the nearest integer.
+
+
+This keeps the closest representable fixed-point value.
+
+
+Example:
+
+
+```cpp
+float f = 42.42f;
+int raw = roundf(f * (1 << 8));
+std::cout << raw << std::endl;
+```
+
+This stores the closest raw value that represents `42.42`.
+
+
+In the class, this is usually done in the constructor:
+
+
+```cpp
+Fixed::Fixed(const float number) {
+    rawBits = roundf(number * (1 << bits));
+}
+```
+
+### Static member functions
+
+A static member function belongs to the class itself, not to one specific object.
+
+It can be called without creating an instance of the class.
+
+Static member functions are useful for operations that work on two objects but do not depend on a single `this` object.
+
+In this module, `min` and `max` are good examples of static member functions.
+
+### Main ideas to remember
+
+- Ad-hoc polymorphism means the same operator can behave differently for different types.
+- Operator overloading lets user-defined classes behave like built-in types.
+- Orthodox Canonical Form gives a class the four core special member functions.
+- Fixed-point numbers store scaled integers instead of true floating-point values.
+- Floating-point numbers are approximate, not exact.
+- Static member functions belong to the class, not to an object.
+
+## Resources
+
+- [cppreference](https://en.cppreference.com/w/cpp)
+- [cplusplus.com tutorial](https://cplusplus.com/doc/tutorial/)
+- [cppreference operator overloading](https://en.cppreference.com/w/cpp/language/operators)
+- [cppreference increment/decrement operators](https://en.cppreference.com/w/cpp/language/operator_incdec)
+- [cppreference static members](https://en.cppreference.com/w/cpp/language/static)
+- [Orthodox Canonical Form explanation](https://hackmd.io/@ChloeIsCoding/S1D-y80bll)
+- [Orthodox Canonical Form example](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/ry9Uc8TTyl)
+- [Fixed-point representation](https://www.geeksforgeeks.org/computer-organization-architecture/fixed-point-representation/)
+- [Fixed-point arithmetic basics](https://www.cprogramming.com/tutorial/floating_point/understanding_floating_point.html)
+- [Copy assignment operators](https://www.ibm.com/docs/en/i/7.6.0?topic=only-copy-assignment-operators-c)
+- [Ad-hoc polymorphism explanation](https://catonmat.net/cpp-polymorphism)

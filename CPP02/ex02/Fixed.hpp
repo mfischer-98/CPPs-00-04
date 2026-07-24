@@ -6,7 +6,7 @@
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 15:08:19 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/24 12:10:04 by mefische         ###   ########.fr       */
+/*   Updated: 2026/07/24 13:47:27 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Fixed {
 		// Canonical Form
 		Fixed();
 		Fixed(const Fixed& other);
-		Fixed& operator=(const Fixed& other); 
+		Fixed& operator=(const Fixed& other);
 		~Fixed();
 
 		// Other constructors
