@@ -6,7 +6,7 @@
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/24 16:41:13 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/24 16:45:30 by mefische         ###   ########.fr       */
+/*   Updated: 2026/07/27 16:01:27 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ FragTrap& FragTrap::operator=(const FragTrap& other) {
 		setName(other.getName());
 		setHitPoints(other.getHitPoints());
 		setEnergyPoints(other.getEnergyPoints());
-		setEnergyPoints(other.getAttackDamage());
+		setAttackDamage(other.getAttackDamage());
 	}
 	return *this;
 }

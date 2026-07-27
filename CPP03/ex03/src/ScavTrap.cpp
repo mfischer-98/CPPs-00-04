@@ -6,11 +6,11 @@
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/24 15:44:21 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/27 16:01:01 by mefische         ###   ########.fr       */
+/*   Updated: 2026/07/27 16:01:58 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "../inc/ScavTrap.hpp"
 
 /* Constructors & Destructor*/
 

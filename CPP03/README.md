@@ -43,6 +43,7 @@ CPP03/
 ├── ex00/
 ├── ex01/
 ├── ex02/
+├── ex03/
 └── README.md
 ```
 
@@ -69,6 +70,12 @@ An exercise about inheritance, constructor chaining, destructor chaining, and ov
 
 
 An exercise about another derived class with different stats and its own special ability.
+
+
+### ex03 — DiamondTrap
+
+
+An exercise about **multiple inheritance**, where one class inherits from more than one base class.
 
 
 ## Concepts Learned
@@ -158,6 +165,21 @@ If a member is `private`, the derived class cannot access it directly. If it is 
 In CPP03, the base class often uses `protected` so derived classes like `ScavTrap` and `FragTrap` can reuse and adjust the inherited stats directly.
 
 
+### Multiple inheritance
+
+Multiple inheritance is a type of inheritance where a class inherits from two or more base classes. It allows a derived class to combine the properties and behaviors of multiple parent classes into a single class.
+
+A simple mental model is:
+
+- a child class can inherit from both a `Father` class and a `Mother` class,
+- so it combines features from both parents into one derived class.
+
+### Virtual inheritance
+
+Virtual inheritance is a C++ technique that ensures only one copy of a shared base class is inherited in a diamond-shaped hierarchy.
+
+Without virtual inheritance, `DiamondTrap` can receive two `ClapTrap` subobjects: one through `ScavTrap` and one through `FragTrap`. That can create ambiguity when accessing inherited members. With virtual inheritance, both parent classes share a single `ClapTrap` base, which matches the subject requirement that the `ClapTrap` part of `DiamondTrap` should be created once and only once.
+
 ### Virtual functions and overriding
 
 
@@ -213,6 +235,14 @@ frank.highFivesGuys();
 ```
 
 This shows that a derived class can reuse the base functionality while also adding its own personality.
+
+### this->name VS _name
+
+`_name` is just a member variable name while `this->name` means the current object’s member named name.
+
+this-> does not give special access to private members, it only makes it clear you are using a class member. If your attribute is called _name, you write this->_name.
+
+If a parameter has the same name as the member, this-> helps avoid confusion.
 
 ### Main ideas to remember
 
