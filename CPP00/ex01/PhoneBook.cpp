@@ -6,7 +6,7 @@
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/20 11:43:55 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/23 10:59:05 by mefische         ###   ########.fr       */
+/*   Updated: 2026/07/28 10:54:49 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,6 @@ static bool	promptLine(const std::string& prompt, std::string& input)
 	if (std::cin.eof())
 		return false;
 	return checkEmpty(input);
-}
-
-/* Function to check if input is only numbers 
-	- needs to be unsigned char so function has normal behaviour across systems */
-static bool	checkDigits(const std::string& input)
-{
-	for (int i = 0; input.length(); i++)
-	{
-		if (!std::isdigit(static_cast<unsigned char>(input[i])))
-			return false;
-	}
-	return true;
 }
 
 /* Function to guarantee <= 10 characters and to transform >10 into 9 + "." 
@@ -113,22 +101,8 @@ void	PhoneBook::addContact() {
 		return ;
 	contacts[index].setDarkSecret(secret);
 
-	
-	while (1)
-	{
-		std::cout << " ✿ " << PINK << "Phone number: " << RESET;
-		std::getline(std::cin, phone); 
-		if (std::cin.eof())
-			return ;
-		if (phone == "BACK")
-		{
-			std::cout << std::endl;
-			return ;
-		}
-		if (checkDigits(phone) && checkEmpty(phone))
-			break ;
-		std::cout << "Invalid phone number, try again or type BACK to return to MENU ✿" << std::endl;
-	}
+	std::cout << " ✿ " << PINK << "Phone number: " << RESET;
+	std::getline(std::cin, phone); 
 	std::cout << PEACH << "\nContact added successfully ♡\n" << RESET << std::endl;
 	contacts[index].setPhoneNumber(phone);
 	if (size < 8)
@@ -178,7 +152,7 @@ void	PhoneBook::searchContact() const {
 			return ;
 		if (input == "BACK")
 			return ;
-		if (!checkEmpty(input) || !checkDigits(input))
+		if (!checkEmpty(input) || input.length() > 1 || !std::isdigit(input[0]))
 			invalidIndex();
 		else
 		{
