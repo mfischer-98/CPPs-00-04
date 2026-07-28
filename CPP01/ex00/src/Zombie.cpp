@@ -6,7 +6,7 @@
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/22 12:22:17 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/28 12:32:30 by mefische         ###   ########.fr       */
+/*   Updated: 2026/07/28 14:43:32 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 Zombie::Zombie(std::string zombieName) : name(zombieName) {}
 
 Zombie::~Zombie() {
-	std::cout << "Destructor called and Zombie destroyed." << std::endl;
+	std::cout << "Destructor called and Zombie " << name << " was destroyed." << std::endl;
 }
 
 /* Member function */
