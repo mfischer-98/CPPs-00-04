@@ -6,7 +6,7 @@
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/20 11:43:55 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/28 10:54:49 by mefische         ###   ########.fr       */
+/*   Updated: 2026/07/28 11:12:17 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ PhoneBook::~PhoneBook() {}
 /* Adds a new contact to the phonebook.
 	- Prompts the user for first name, last name, nickname, dark secret and phone number
 	- Uses std::getline for every field so spaces are allowed
-	- Rejects empty input and invalid phone numbers
+	- Rejects empty input
 	- Allows the user to type "BACK" when mistaking phone to cancel and return to the menu
 	- Stops cleanly if EOF is reached with Ctrl+D.
 	- Stores contacts in a circular way, overwriting the oldest entry when the phonebook is full */

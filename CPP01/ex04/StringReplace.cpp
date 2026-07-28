@@ -6,7 +6,7 @@
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 09:51:07 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/23 12:02:49 by mefische         ###   ########.fr       */
+/*   Updated: 2026/07/28 12:52:16 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void StringReplace::fileReplace() {
 	size_t	index = 0;
 	while(std::getline(in, line))
 	{
-		if ( oldString.empty())
+		if (oldString.empty())
 			break ;
 		index = line.find(oldString);
 		while (index != std::string::npos)
