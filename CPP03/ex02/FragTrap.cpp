@@ -6,13 +6,15 @@
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/24 16:41:13 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/27 16:01:27 by mefische         ###   ########.fr       */
+/*   Updated: 2026/07/30 15:50:49 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
 /* Constructors & Destructor*/
+
+FragTrap::FragTrap() : ClapTrap() {}
 
 FragTrap::FragTrap(const std::string& name) : ClapTrap(name) {
 	std::cout << "FragTrap Constructor called" << std::endl;

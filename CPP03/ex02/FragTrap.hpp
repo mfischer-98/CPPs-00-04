@@ -6,7 +6,7 @@
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/24 16:41:16 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/24 16:52:25 by mefische         ###   ########.fr       */
+/*   Updated: 2026/07/30 15:33:31 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 class FragTrap: public ClapTrap {
 	public:
+		FragTrap();
 		FragTrap(const std::string& name);
 		FragTrap(const FragTrap& other);
 		FragTrap& operator=(const FragTrap& other);

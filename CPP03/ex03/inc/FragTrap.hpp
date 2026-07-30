@@ -6,7 +6,7 @@
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/24 16:41:16 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/27 15:48:08 by mefische         ###   ########.fr       */
+/*   Updated: 2026/07/30 15:33:39 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 class FragTrap: virtual public ClapTrap {
 	public:
+		FragTrap();
 		FragTrap(const std::string& name);
 		FragTrap(const FragTrap& other);
 		FragTrap& operator=(const FragTrap& other);

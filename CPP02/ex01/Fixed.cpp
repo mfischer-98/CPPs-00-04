@@ -6,7 +6,7 @@
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 15:59:19 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/24 11:33:37 by mefische         ###   ########.fr       */
+/*   Updated: 2026/07/30 15:25:58 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /* CONSTRUCTORS & DESTRUCTOR */
 
-Fixed::Fixed() : rawBits(0) {
+Fixed::Fixed() : _rawBits(0) {
 	std::cout << "Default constructor called" << std::endl;
 }
 
@@ -30,7 +30,7 @@ Fixed::Fixed(const Fixed& other) {
 Fixed& Fixed::operator=(const Fixed& other) {
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &other)
-		rawBits = other.rawBits;
+		_rawBits = other._rawBits;
 	return *this;
 }
 
@@ -43,37 +43,37 @@ Fixed::~Fixed() {
 	- This multiplies the value by 2^bits (2^8 = 256), size of the fractional part */
 Fixed::Fixed(const int other) {
 	std::cout << "Int constructor called" << std::endl;
-	this->rawBits = other << bits; //other number / 2^bits
+	this->_rawBits = other << _bits; //other number / 2^bits
 }
 
 /* Converts a floating-point number to fixed-point representation by
 	multiplying by 2^bits and rounding to the nearest integer. */
 Fixed::Fixed(const float other) {
 	std::cout << "Float constructor called" << std::endl;
-	this->rawBits = (int)roundf(other * (1 << bits)); //convert and round
+	this->_rawBits = (int)roundf(other * (1 << _bits)); //convert and round
 }
 
 /* MEMBER FUNCTIONS */
 
 int Fixed::getRawBits(void) const {
 	std::cout << "getRawBits member function called" << std::endl;
-	return rawBits;
+	return _rawBits;
 }
 
 void Fixed::setRawBits(int const raw) {
-	rawBits = raw;
+	_rawBits = raw;
 }
 
 /* Converts the internal fixed-point value back to a float (cast) by dividing
 	the raw integer by 2^bits. */
 float Fixed::toFloat(void) const {
-	return (float)this->rawBits / (1 << bits);
+	return (float)this->_rawBits / (1 << _bits);
 }
 
 /* Converts the internal fixed-point value back to an int by removing
 	the fractional part (after point) with a right shift. */
 int Fixed::toInt(void) const {
-	return this->rawBits >> bits;
+	return this->_rawBits >> _bits;
 }
 
 /* OPERATOR OVERLOAD FUNCTION */

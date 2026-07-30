@@ -6,13 +6,15 @@
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/24 15:44:21 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/27 16:01:58 by mefische         ###   ########.fr       */
+/*   Updated: 2026/07/30 15:52:13 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ScavTrap.hpp"
 
 /* Constructors & Destructor*/
+
+ScavTrap::ScavTrap() : ClapTrap() {}
 
 ScavTrap::ScavTrap(const std::string& name) : ClapTrap(name) {
 	std::cout << "ScavTrap Constructor called" << std::endl;

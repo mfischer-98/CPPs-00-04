@@ -6,13 +6,15 @@
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/24 13:29:48 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/27 15:44:31 by mefische         ###   ########.fr       */
+/*   Updated: 2026/07/30 15:35:22 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ClapTrap.hpp"
 
 /* Constructors & Destructor*/
+
+ClapTrap::ClapTrap() : name("Default") {}
 
 ClapTrap::ClapTrap(const std::string& str) : name(str), hitPoints(10), energyPoints(10), attackDamage(0) {
 	std::cout << "ClapTrap Constructor called" << std::endl;

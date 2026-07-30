@@ -6,13 +6,15 @@
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/27 12:00:13 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/27 16:03:33 by mefische         ###   ########.fr       */
+/*   Updated: 2026/07/30 15:53:07 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/DiamondTrap.hpp"
 
 /* CONSTRUCTORS & DESTRUCTOR */
+
+DiamondTrap::DiamondTrap() : ClapTrap() {}
 
 DiamondTrap::DiamondTrap(const std::string& newName) :
 	ClapTrap(newName + "_clap_name"), FragTrap(newName), ScavTrap(newName), _name(newName)

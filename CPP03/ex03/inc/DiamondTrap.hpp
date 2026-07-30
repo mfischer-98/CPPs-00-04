@@ -6,7 +6,7 @@
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/27 12:00:16 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/27 15:45:22 by mefische         ###   ########.fr       */
+/*   Updated: 2026/07/30 15:33:48 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ class DiamondTrap: public FragTrap, public ScavTrap {
 	private:
 		std::string	_name;
 	public:
+		DiamondTrap();
 		DiamondTrap(const std::string& newName);
 		DiamondTrap(const DiamondTrap& other);
 		DiamondTrap& operator=(const DiamondTrap& other);
