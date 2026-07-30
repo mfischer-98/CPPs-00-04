@@ -6,7 +6,7 @@
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/22 12:21:03 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/22 14:53:02 by mefische         ###   ########.fr       */
+/*   Updated: 2026/07/30 08:27:41 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ class Zombie {
 
 	public:
 		Zombie(std::string name);
-		~Zombie();
+		~Zombie(void);
 
 		void announce(void);
 };
 
-void	randomChump( std::string name );
-Zombie*	newZombie( std::string name );
+void	randomChump(std::string name);
+Zombie*	newZombie(std::string name);

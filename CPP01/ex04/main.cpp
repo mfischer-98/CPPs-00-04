@@ -6,7 +6,7 @@
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 09:40:24 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/23 12:03:53 by mefische         ###   ########.fr       */
+/*   Updated: 2026/07/30 09:12:50 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static bool	checkFile(std::string path)
 
 int main (int argc, char **argv)
 {
-	if (argc != 4 || argv[1][0] == '\0' || argv[2][0] == '\0' || !checkFile(argv[1]))
+	if (argc != 4 || argv[2][0] == '\0' || !checkFile(argv[1]))
 	{
 		std::cerr << "Error\nInvalid file or args" << std::endl;
 		return 1;

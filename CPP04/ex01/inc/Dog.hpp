@@ -6,7 +6,7 @@
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/27 16:31:22 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/28 14:57:30 by mefische         ###   ########.fr       */
+/*   Updated: 2026/07/29 11:34:57 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 class Dog: public Animal {
 	private:
-		Brain*	brain;
+		Brain*	_brain;
 	public:
 		Dog();
 		Dog(const Dog& other);

@@ -6,7 +6,7 @@
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 09:51:07 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/28 12:52:16 by mefische         ###   ########.fr       */
+/*   Updated: 2026/07/30 09:09:23 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ StringReplace::~StringReplace() {}
 	- ifstream opens the original file and ofstream creates the .replace file 
 	- c_str() converts a std::string into a C-style string (const char*) -C-style API
 	- std::getline(stream, line) reads one line at a time from a stream and returns line wo \n
+	- std::string::npos is a special constant value used by std::string to mean “no position” / “not found”
 	- << sends data to file.replace 
 	- find: finds the string in the line
 	- erase(pos, len): erases the old string
@@ -32,14 +33,28 @@ void StringReplace::fileReplace() {
 	std::string newPath = filePath + ".replace";
 
 	std::ifstream in(filePath.c_str());
+	if (!in.is_open())
+	{
+		std::cerr << "Error\nCould not open input file" << std::endl;
+		return ;
+	}
+
 	std::ofstream out(newPath.c_str());
-	
+		if (!out.is_open())
+	{
+		std::cerr << "Error\nCould not open output file" << std::endl;
+		return ;
+	}
+
 	std::string	line;
+	if (oldString.empty())
+	{
+		std::cerr << "Error\nEmpty search string" << std::endl;
+		return ;
+	}
 	size_t	index = 0;
 	while(std::getline(in, line))
 	{
-		if (oldString.empty())
-			break ;
 		index = line.find(oldString);
 		while (index != std::string::npos)
 		{

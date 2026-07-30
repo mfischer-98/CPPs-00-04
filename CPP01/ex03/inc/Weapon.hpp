@@ -6,7 +6,7 @@
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/22 15:43:24 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/22 16:32:30 by mefische         ###   ########.fr       */
+/*   Updated: 2026/07/30 08:40:19 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ class Weapon {
 		Weapon(std::string weaponType);
 		~Weapon();
 
-		std::string	getType() const;
-		void		setType(std::string weaponType);
+		const std::string& getType();
+		void setType(std::string weaponType);
 };
 
 #endif

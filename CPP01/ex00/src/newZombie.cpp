@@ -6,7 +6,7 @@
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/22 12:26:48 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/28 14:20:55 by mefische         ###   ########.fr       */
+/*   Updated: 2026/07/30 08:28:56 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /* This function creates a zombie, names it and returns it 
 	- newZombie() uses new, so the zombie is created on the heap. That means it stays alive
 	after the function ends, until I manually destroy it with delete. 
-	- I use this because I need the object to survive outside the function scope */
+	- I use this because I need the object to survive outside the function */
 Zombie* newZombie(std::string name) {
 	Zombie* newZombie = new Zombie(name);
 	return newZombie;
