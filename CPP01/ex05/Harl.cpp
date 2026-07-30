@@ -6,7 +6,7 @@
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 14:03:25 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/23 14:42:07 by mefische         ###   ########.fr       */
+/*   Updated: 2026/07/30 14:49:28 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void Harl::error(void) {
 	- funcs[4] = array of 4 of those pointers 
 	- (void) = each pointed-to member function takes no parameters */
 void Harl::complain(std::string level) {
-	std::string levels[4] = {"debug", "info", "warning", "error"};
+	std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
 	void (Harl::*funcs[4])(void)  = {
 		&Harl::debug,

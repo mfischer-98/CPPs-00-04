@@ -6,7 +6,7 @@
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 09:51:07 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/30 09:09:23 by mefische         ###   ########.fr       */
+/*   Updated: 2026/07/30 14:50:32 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void StringReplace::fileReplace() {
 		if (!out.is_open())
 	{
 		std::cerr << "Error\nCould not open output file" << std::endl;
+		in.close();
 		return ;
 	}
 
