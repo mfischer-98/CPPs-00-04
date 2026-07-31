@@ -6,7 +6,7 @@
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 15:59:19 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/30 15:25:58 by mefische         ###   ########.fr       */
+/*   Updated: 2026/07/31 11:28:57 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,11 @@ Fixed::Fixed() : _rawBits(0) {
 	std::cout << "Default constructor called" << std::endl;
 }
 
-/* Copy Constructor: Creates a new Fixed object as a copy of another Fixed object. */
 Fixed::Fixed(const Fixed& other) {
 	std::cout << "Copy constructor called" << std::endl;
 	*this = other;
 }
 
-/* Copy assignment operator: Copies the internal fixed-point value from another Fixed object 
-	into this object, unless both objects are the same.
-	- In a more complex function I can decide which members are copied */
 Fixed& Fixed::operator=(const Fixed& other) {
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &other)
@@ -40,17 +36,19 @@ Fixed::~Fixed() {
 
 /* Converts an integer to fixed-point representation by shifting left
 	by the number of fractional bits (after point)
-	- This multiplies the value by 2^bits (2^8 = 256), size of the fractional part */
+	- This multiplies the value by 2^bits (2^8 = 256), size of the fractional part
+	- x 256 is the same as shifting left by 8 bits */
 Fixed::Fixed(const int other) {
 	std::cout << "Int constructor called" << std::endl;
-	this->_rawBits = other << _bits; //other number / 2^bits
+	this->_rawBits = other << _bits;
 }
 
 /* Converts a floating-point number to fixed-point representation by
-	multiplying by 2^bits and rounding to the nearest integer. */
+	multiplying by 2^bits and rounding to the nearest integer. 
+	- bitwise operators only works on ints, so I do 1 << bits first */
 Fixed::Fixed(const float other) {
 	std::cout << "Float constructor called" << std::endl;
-	this->_rawBits = (int)roundf(other * (1 << _bits)); //convert and round
+	this->_rawBits = (int)roundf(other * (1 << _bits));
 }
 
 /* MEMBER FUNCTIONS */

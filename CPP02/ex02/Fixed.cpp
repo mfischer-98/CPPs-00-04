@@ -6,7 +6,7 @@
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 15:59:19 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/24 12:14:17 by mefische         ###   ########.fr       */
+/*   Updated: 2026/07/31 11:46:17 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,10 @@
 
 Fixed::Fixed() : rawBits(0) {}
 
-/* Copy Constructor: Creates a new Fixed object as a copy of another Fixed object. */
 Fixed::Fixed(const Fixed& other) {
 	*this = other;
 }
 
-/* Copy assignment operator: Copies the internal fixed-point value from another Fixed object 
-	into this object, unless both objects are the same.
-	- In a more complex function I can decide which members are copied */
 Fixed& Fixed::operator=(const Fixed& other) {
 	if (this != &other)
 		rawBits = other.rawBits;

@@ -87,11 +87,7 @@ Even when a class is simple, following this form helps keep the code clean, pred
 
 #### Default constructor
 
-The default constructor is called when an object is created without any arguments.
-
-It is used to give the object a valid starting state.
-
-For example, a `Fixed` object might start with a raw value of `0`.
+The default constructor is called when an object is created without any arguments. It is used to give the object a valid starting state. For example, a `Fixed` object might start with a raw value of `0`.
 
 #### Copy constructor
 
@@ -225,8 +221,6 @@ That means:
 
 
 An integer is converted to fixed-point by shifting it left by the number of fractional bits.
-
-
 This multiplies the value by the scale factor.
 
 

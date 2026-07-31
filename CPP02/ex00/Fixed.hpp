@@ -6,12 +6,13 @@
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 15:08:19 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/30 14:57:21 by mefische         ###   ########.fr       */
+/*   Updated: 2026/07/31 11:13:31 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 
+//Static member: there is only one shared by all Fixed objects.
 class Fixed {
 	private:
 		int _rawBits;
