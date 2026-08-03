@@ -6,7 +6,7 @@
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/24 13:29:43 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/30 15:45:48 by mefische         ###   ########.fr       */
+/*   Updated: 2026/08/03 15:11:45 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,26 @@
 
 int	main()
 {
-	ClapTrap	madMan("madMan");
-	ClapTrap	oldMan("oldMan");
+	ClapTrap	bob("bob");
+	ClapTrap	patrick("patrick");
+	ClapTrap	plankton(bob);
 
-	madMan.setAttackDamage(5);
-	oldMan.setAttackDamage(2);
-	oldMan.setAttackDamage(-3);
+	patrick = plankton;
 
-	madMan.attack("oldMan");
-	oldMan.takeDamage(madMan.getAttackDamage());
-	oldMan.takeDamage(30);
-	oldMan.attack("madMan");
-	madMan.takeDamage(oldMan.getAttackDamage());
-	oldMan.beRepaired(5);
+	std::cout << bob.getName() << std::endl;
+	std::cout << &bob << std::endl;
+
+	std::cout << patrick.getName() << std::endl;
+	std::cout << &patrick << std::endl;
+
+	std::cout << plankton.getName() << std::endl;
+	std::cout << &plankton << std::endl;
+
+	bob.attack("patrick");
+	patrick.takeDamage(5);
+	patrick.takeDamage(20);
+
+	patrick.attack("bob");
+	patrick.beRepaired(5);
 	return 0;
 }

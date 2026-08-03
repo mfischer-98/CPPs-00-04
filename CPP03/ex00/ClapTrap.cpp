@@ -6,7 +6,7 @@
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/24 13:29:48 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/30 15:34:09 by mefische         ###   ########.fr       */
+/*   Updated: 2026/08/03 15:10:15 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /* Constructors & Destructor*/
 
-ClapTrap::ClapTrap() : name("Default") {}
+ClapTrap::ClapTrap() : name("Default") , hitPoints(10), energyPoints(10), attackDamage(0) {}
 
 ClapTrap::ClapTrap(const std::string& str) : name(str), hitPoints(10), energyPoints(10), attackDamage(0) {
 	std::cout << "Constructor called" << std::endl;
@@ -42,21 +42,6 @@ ClapTrap::~ClapTrap() {
 }
 
 /* Getters & Setters */
-void	ClapTrap::setHitPoints(int hit) {
-	if (hit > 0)
-		this->hitPoints = hit;
-	else
-		std::cout << "HitPoints have to be more than 0." << std::endl;
-}
-
-void	ClapTrap::setEnergyPoints(int energy) {
-	if (energy > 0)
-		this->energyPoints = energy;
-	else
-		std::cout << "EnergyPoints have to be more than 0." << std::endl;
-
-}
-
 void	ClapTrap::setAttackDamage(int attack) {
 	if (attack > 0)
 		this->attackDamage = attack;
@@ -76,6 +61,11 @@ int	ClapTrap::getAttackDamage() const {
 	return this->attackDamage;
 }
 
+std::string ClapTrap::getName() const {
+	return this->name;
+}
+
+
 /* Member Functions */
 
 void ClapTrap::attack(const std::string& target) {
@@ -90,6 +80,12 @@ void ClapTrap::attack(const std::string& target) {
 }
 
 void ClapTrap::takeDamage(unsigned int amount) {
+	if (this->hitPoints <= amount)
+	{
+		this->setHitPoints(0);
+		std::cout << "ClapTrap " << name << " died." << std::endl;
+		return ;
+	}
 	std::cout << "ClapTrap " << name << " took " << amount << " points of damage! ";
 	this->hitPoints -= amount;
 	std::cout << "ClapTrap " << name << " only has " << hitPoints << " remaining." << std::endl;

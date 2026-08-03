@@ -6,7 +6,7 @@
 /*   By: mefische <mefische@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/24 13:29:46 by mefische          #+#    #+#             */
-/*   Updated: 2026/07/30 15:40:41 by mefische         ###   ########.fr       */
+/*   Updated: 2026/08/03 15:15:53 by mefische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CLAPTRAP_HPP
 
 # include <iostream>
+# include <climits>
 
 class ClapTrap {
 	private:
@@ -28,16 +29,13 @@ class ClapTrap {
 		ClapTrap& operator=(const ClapTrap& other);
 		~ClapTrap();
 
-		void	setHitPoints(int hit);
-		void	setEnergyPoints(int energy);
-		void	setAttackDamage(int attack);
-		int		getHitPoints() const;
-		int		getEnergyPoints() const;
-		int		getAttackDamage() const;
+		std::string getName() const;
 
 		void attack(const std::string& target);
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
 };
+
+
 
 #endif
